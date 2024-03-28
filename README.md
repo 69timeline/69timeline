@@ -1,47 +1,59 @@
-# Astro Starter Kit: Minimal
+# 69Timeline
 
+## Development
+
+You need `node` and `npm` install (try a fairly recent version, latest lts node version is v20).
+
+Clone and cd into the repo then run
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+```
+to install depedencies, then you can run
+```sh
+npm run dev
+```
+to start a dev server on port `1234`.
+
+Refer to [astro docs](https://docs.astro.build/en/basics/project-structure/)
+for the project structure.
+
+## Astro lsp Setup
+
+To install the lsp run
+```sh
+npm i -g typescript prettier prettier-plugin-astro @astrojs/language-server
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+Then for helix add this to the `languages.toml`:
+```toml
+[language-server.astro-ls]
+command = "astro-ls"
+args = ["--stdio"]
+# Replace the path to where your global node installs go (or just globally search for node_modules/typescript/lib)
+config = { typescript = { tsdk = "/usr/lib/node_modules/typescript/lib" }}
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+[[language]]
+name = "astro"
+scope = "source.astro"
+injection-regex = "astro"
+file-types = ["astro"]
+language-servers = ["astro-ls"]
+formatter = { command = "prettier", args = ["--plugin", "prettier-plugin-astro", "--parser", "astro"] }
+auto-format = true
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content structure
+The `src/content` folder has a `config.ts` that defines the structure of all
+files contained in the subfolders.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### src/content/events
+Contains historic events, this what is shown on the main timeline and as such is the most
+important.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### src/content/actors
+Contains data about real persons and are refenced by events by their ids (the file names).
 
-## 🧞 Commands
+Ids follow the CRIs format, `${firstName}.${lastName}` with letters in lowercase and no accents.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+If two person would have the same id, add .1, .2 etc for each duplicate, and add metadata
+in the files to be able to deferentiate them easily.
