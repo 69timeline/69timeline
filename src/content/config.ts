@@ -5,6 +5,10 @@ const actorsCollection = defineCollection({
   schema: z.object({
     firstName: z.string(),
     lastName: z.string(),
+    birthDate: z.date().optional(),
+
+    quickDescription: z.string().optional(),
+    wikipediaUrl: z.string().optional(),
   }),
 });
 
@@ -12,10 +16,12 @@ const eventsCollection = defineCollection({
   type: "data",
   schema: z.object({
     name: z.string(),
+    description: z.string().optional(),
     date: z.date(),
     end: z.date().optional(),
     actors: z.array(z.object({
       actor: reference("actors"),
+      role: z.string().optional(),
     })),
   }),
 });
