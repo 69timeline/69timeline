@@ -7,6 +7,8 @@
   --bg-1: #111111;
   --bg-2: #333333;
   --text-1: white;
+
+  --rounded: 0.2rem;
 }
 
 * {
@@ -23,4 +25,11 @@ html {
 body {
   background-color: var(--bg-1);
   color: var(--text-1);
+}
+
+code {
+  display: inline-block;
+  background-color: var(--bg-2);
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border-radius: var(--rounded);
 }

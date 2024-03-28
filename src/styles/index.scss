@@ -8,10 +8,35 @@ h1 {
   color: var(--primary);
 }
 
-ul {
+.events {
   margin-top: 1rem;
 
-  li::before {
-    content: "- ";
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  >li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.label {
+  color: var(--primary);
+}
+
+.actors {
+  display: inline;
+
+  >li {
+    display: inline;
+  }
+
+  // Insert comma before every li that are after an other li (every li but the first one)
+  >li + li {
+    &::before {
+      content: ", ";
+    }
   }
 }

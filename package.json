@@ -12,9 +12,11 @@
     "@astrojs/check": "^0.5.10",
     "astro": "^4.5.10",
     "normalize.css": "^8.0.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "yaml": "^2.4.1"
   },
   "devDependencies": {
+    "@types/node": "^20.11.30",
     "sass": "^1.72.0"
   }
 }
