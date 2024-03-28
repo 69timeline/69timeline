@@ -1,0 +1,50 @@
+/// Various CSS rules to reset some browser defaults
+@import "normalize.css/normalize.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+	// So that the body can use height: 100%; and cover the full screen
+  height: 100%;
+  tab-size: 4;
+}
+
+body {
+	padding: 0;
+  line-height: inherit;
+  font-size: 1.1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7,
+h8,
+h9,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
