@@ -1,5 +1,21 @@
 # 69Timeline
 
+## Content structure
+The `src/content` folder has a `config.ts` that defines the structure of all
+files contained in the subfolders.
+
+### src/content/events
+Contains historic events, this what is shown on the main timeline and as such is the most
+important.
+
+### src/content/actors
+Contains data about real persons and are refenced by events by their ids (the file names).
+
+Ids follow the CRIs format, `${firstName}.${lastName}` with letters in lowercase and no accents.
+
+If two person would have the same id, add .1, .2 etc for each duplicate, and add metadata
+in the files to be able to deferentiate them easily.
+
 ## Development
 
 You need `node` and `npm` install (try a fairly recent version, latest lts node version is v20).
@@ -41,19 +57,3 @@ language-servers = ["astro-ls"]
 formatter = { command = "prettier", args = ["--plugin", "prettier-plugin-astro", "--parser", "astro"] }
 auto-format = true
 ```
-
-## Content structure
-The `src/content` folder has a `config.ts` that defines the structure of all
-files contained in the subfolders.
-
-### src/content/events
-Contains historic events, this what is shown on the main timeline and as such is the most
-important.
-
-### src/content/actors
-Contains data about real persons and are refenced by events by their ids (the file names).
-
-Ids follow the CRIs format, `${firstName}.${lastName}` with letters in lowercase and no accents.
-
-If two person would have the same id, add .1, .2 etc for each duplicate, and add metadata
-in the files to be able to deferentiate them easily.
